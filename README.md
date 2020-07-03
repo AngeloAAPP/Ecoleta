@@ -36,6 +36,8 @@ Outra diferença foi no banco de dados. No projeto original foi utilizado o SQLI
 
 ### Como utilizar
 
+Certifique-se que você tenha o Node JS e o Microsoft Sql Server instalados no computador.
+
 **Primeiramente, temos que configurar a base de dados.**
 
 Considerando que você ja tenha o microsoft sql server instalado, crie uma base de dados e dê o nome que quiser. Depois, copie todo o conteúdo do arquivo script bd, localizado
