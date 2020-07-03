@@ -1,0 +1,46 @@
+create table points
+(
+	id int identity(1,1) constraint pk_pointsID primary key,
+	imagem varchar(255) not null,
+	nome varchar(255) not null,
+	email varchar(255) not null,
+	whatsapp varchar(255) not null,
+	latitude float not null,
+	longitude float not null,
+	cidade varchar(255) not null,
+	uf varchar(2) not null
+)
+
+create table itens
+(
+	id int identity(1,1) constraint pk_itensID primary key,
+	imagem varchar(255) not null,
+	titulo varchar(255) not null
+)
+
+create table point_itens
+(
+	id int identity(1,1) constraint pk_point_itensID primary key,
+	point_id int,
+	item_id int, 
+	constraint fk_point foreign key(point_id) references points(ID),
+	constraint fk_item foreign key(item_id) references itens(id)
+)
+
+insert into itens(imagem, titulo)
+values('lampadas.svg', 'Lâmpadas');
+
+insert into itens(imagem, titulo)
+values('Baterias.svg', 'Pilhas e Baterias');
+
+insert into itens(imagem, titulo)
+values('papeis-papelao.svg', 'Papéis e Papelão');
+
+insert into itens(imagem, titulo)
+values('eletronicos.svg', 'Resíduos Eletrônicos');
+
+insert into itens(imagem, titulo)
+values('organicos.svg', 'Resíduos Orgânicos');
+
+insert into itens(imagem, titulo)
+values('oleo.svg', 'Óleo de Cozinha');
