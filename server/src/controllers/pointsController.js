@@ -65,9 +65,7 @@ module.exports = {
         return res.json({
             sucess: true,
             data: {
-                point: {
-                    ...point, imagem: `${baseURL}/image/${point.imagem}`
-                },
+                 ...point, imagem: `${baseURL}/image/${point.imagem}`,
                 itens
             }
         })
