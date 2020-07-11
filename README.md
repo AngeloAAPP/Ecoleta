@@ -34,6 +34,9 @@ por escrever os comandos para o banco de dados na própria linguagem SQL, em vez
 
 Outra diferença foi no banco de dados. No projeto original foi utilizado o SQLITE, enquanto eu resolvi utilizar o sql server.
 
+Para fixar alguns conceitos como Migrations, Seeders, Models, Transactions, desenvolvi a mesma versão do back-end contida neste projeto utilizando Sequelize. 
+O back-end desenvolvido com sequelize esta disponível <a href = "https://github.com/AngeloAAPP/Ecoleta-Sequelize">aqui</a>
+
 ### Como utilizar
 
 Certifique-se que você tenha o Node JS e o Microsoft Sql Server instalados no computador.
