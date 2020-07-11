@@ -22,13 +22,13 @@ const Details = () => {
     const changeMail = () =>{
       MailComposer.composeAsync({
         subject: 'Ecoleta',
-        recipients: [point.point.email]
+        recipients: [point.email]
       })
     }
 
     //Envia uma mensagem via whatsapp para o número do ponto de coleta
     const changeWhatsapp = () => {
-      Linking.openURL(`whatsapp://send?phone=55${point.point.whatsapp}&text=olá, gostaria de saber mais sobre a coleta de itens através do ecoleta`)
+      Linking.openURL(`whatsapp://send?phone=55${point.whatsapp}&text=olá, gostaria de saber mais sobre a coleta de itens através do ecoleta`)
     }
 
     return (
@@ -36,12 +36,12 @@ const Details = () => {
         {
           point.length !== 0 && (<><View style = {styles.container}>
             <BtnBack/>
-            <Image style = {styles.pointImage} source = {{uri: point.point.imagem}}/>
-          <Text style = {styles.pointName}>{point.point.nome}</Text>
+            <Image style = {styles.pointImage} source = {{uri: point.imagem}}/>
+          <Text style = {styles.pointName}>{point.nome}</Text>
           <Text style = {styles.pointItems}>{point.itens.map(point => point.titulo).join(', ')}</Text>
             <View style = {styles.address}>
               <Text style = {styles.addressTitle}>Endereço</Text>
-              <Text style = {styles.addressContent}>{point.point.cidade+ '/' + point.point.uf}</Text>
+              <Text style = {styles.addressContent}>{point.cidade+ '/' + point.uf}</Text>
 
             </View>
         </View>
