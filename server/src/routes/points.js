@@ -11,7 +11,7 @@ const {index, show, validation, create} = require('../controllers/pointsControll
 
 router.get('/', index)
 router.get('/:id', show)
-router.post('/', upload.single('imagem'), celebrate(validation, {abortEarly: false}), create)
+router.post('/', upload.single('imagem'), celebrate(validation), create)
 
 
 module.exports = router

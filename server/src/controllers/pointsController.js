@@ -108,7 +108,7 @@ module.exports = {
             next();
             return res.status(400).json({
                 sucess: false,
-                err: retorno.err
+                message: 'Falha ao cadastrar ponto de coleta. Verifique se os dados foram inseridos corretamente'
             })
         }
         
@@ -131,14 +131,25 @@ module.exports = {
     //Faz a validação dos campos recebidos na requisição
     validation: {
             body: Joi.object().keys({
-                nome: Joi.string().min(3).max(50).required(),
-                email: Joi.string().email().required(),
-                whatsapp: Joi.string().min(11).max(11).required(),
+                nome: Joi.string()
+                    .required()
+                    .min(3).message('Nome deve ter entre 3 e 50 caracteres')
+                    .max(50).message('Nome deve ter entre 3 e 50 caracteres'),
+                email: Joi.string()
+                    .required()
+                    .email().message('Email inválido'),
+                whatsapp: Joi.string()
+                    .length(11).message('Whatsapp deve conter 11 caracteres: ddd e numero')
+                    .required(),
                 latitude: Joi.number().required(),
                 longitude: Joi.number().required(),
                 cidade: Joi.string().required(),
-                uf: Joi.string().min(2).max(2).required(),
-                itens: Joi.string().regex(/^(\d,)*[\d]$/),
+                uf: Joi.string()
+                    .length(2).message('UF deve ter 2 caracteres')
+                    .required(),
+                itens: Joi.string()
+                    .regex(/^(\d,)*[\d]$/)
+                    .message('Selecione corretamente os itens de coleta')
             })
     },
 }
