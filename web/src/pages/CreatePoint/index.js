@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import {FiArrowLeft, FiCheckCircle} from 'react-icons/fi'
 import axios from 'axios'
-import api from '../../api/config'
+import {api, baseURL} from '../../api/config'
 import {Map, Marker, TileLayer} from 'react-leaflet'
 import Dropzone from '../../components/dropzone'
 import './styles.css'
@@ -92,13 +92,23 @@ const CreatePoint = () => {
         data.append("itens", selectedItems.join(','))
         data.append("imagem", selectedFile)
 
-        const response = await api.post("points", data)
-        if(response.data.sucess)
+        const resp = await fetch(`${baseURL}/points`, {body: data, method: 'post'})
+        const json = await resp.json();
+
+        if(json.sucess)
         {
             document.getElementById('modal').classList.remove('hidden')
             setTimeout(() =>{
                 history.push('/')
             }, 2000);
+        }
+        else
+        {
+            
+            if(json)
+                alert(json.message)
+            else
+                alert("Erro de conexão com o servidor")
         }
     }
 
